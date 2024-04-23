@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Link here -->
-    <?php include('include/link.php'); ?>
+    <?php include('../../include/link.php'); ?>
 </head>
 
 <body class="bg-gradient-primary">
@@ -75,7 +75,7 @@
 
     </div>
     <!-- Scripts here -->
-    <?php include('include/script.php'); ?>
+    <?php include('../../include/script.php'); ?>
 </body>
 
 </html>

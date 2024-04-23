@@ -34,7 +34,7 @@
 				
 				$systemlog = "INSERT INTO system_log (action, date_created, user) VALUES ('Account login.', '$systemtime', '$username')";
 				$result = mysqli_query($con, $systemlog);
-				header("location: contents/index.php");
+				header("location: contents/admin/index.php");
 				exit();
 			}
 		}

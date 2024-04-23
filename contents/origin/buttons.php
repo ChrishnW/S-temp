@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Link here -->
-    <?php include('include/link.php'); ?>
+    <?php include('../../include/link.php'); ?>
 </head>
 
 <body id="page-top">
@@ -17,7 +17,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <?php include('include/siderbar_admin.php'); ?>
+        <?php include('../../include/sidebar_admin.php'); ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -27,7 +27,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <?php include('include/header_admin.php'); ?>
+                <?php include('../../include/header_admin.php'); ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -258,7 +258,7 @@
         </div>
     </div>
     <!-- Scripts here -->
-    <?php include('include/script.php'); ?>
+    <?php include('../../include/script.php'); ?>
 </body>
 
 </html>

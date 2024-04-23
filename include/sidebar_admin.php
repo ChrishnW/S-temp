@@ -1,6 +1,7 @@
+<?php include('connect.php') ?>
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../admin/index.php">
     <div class="sidebar-brand-icon rotate-n-15">
       <i class="fas fa-solid fa-business-time"></i>
     </div>
@@ -10,7 +11,7 @@
   <hr class="sidebar-divider my-0">
   <!-- Nav Item - Dashboard -->
   <li class="nav-item">
-    <a class="nav-link" href="index.php">
+    <a class="nav-link" href="dashboard.php">
       <i class="fas fa-fw fa-tachometer-alt"> </i>
       <span> Dashboard </span>
     </a>
@@ -23,13 +24,15 @@
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
       <i class="fas fa-fw fa-cog"> </i>
-      <span> Components </span>
+      <span> My Tasks </span>
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header"> Custom Components: </h6>
-        <a class="collapse-item" href="buttons.php"> Buttons </a>
-        <a class="collapse-item" href="cards.php"> Cards </a>
+        <h6 class="collapse-header"> Components: </h6>
+        <a class="collapse-item" href="buttons.php"> Assigned Tasks </a>
+        <a class="collapse-item" href="cards.php"> To-Do </a>
+        <a class="collapse-item" href="cards.php"> In-Progress </a>
+        <a class="collapse-item" href="cards.php"> Finished </a>
       </div>
     </div>
   </li>
@@ -37,11 +40,11 @@
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
       <i class="fas fa-fw fa-wrench"> </i>
-      <span> Utilities </span>
+      <span> Performance </span>
     </a>
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header"> Custom Utilities: </h6>
+        <h6 class="collapse-header"> Utilities: </h6>
         <a class="collapse-item" href="utilities-color.php"> Colors </a>
         <a class="collapse-item" href="utilities-border.php"> Borders </a>
         <a class="collapse-item" href="utilities-animation.php"> Animations </a>
