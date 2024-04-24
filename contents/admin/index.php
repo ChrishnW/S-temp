@@ -77,7 +77,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row['total_user']; ?></div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-users fa-2x text-gray-300"></i>
+                      <a href="account.php"><i class="fas fa-users fa-2x text-gray-300"></i></a>
                     </div>
                   </div>
                 </div>

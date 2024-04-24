@@ -46,9 +46,9 @@
     <div id="UserManagement" class="collapse" aria-labelledby="UserManagement" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header"> Components: </h6>
-        <a class="collapse-item" href="buttons.php"> Account Registered </a>
-        <a class="collapse-item" href="cards.php"> Department Registered </a>
-        <a class="collapse-item" href="cards.php"> Section Registered </a>
+        <a class="collapse-item" href="account.php"> Account Registered </a>
+        <a class="collapse-item" href="department.php"> Department Registered </a>
+        <a class="collapse-item" href="section.php"> Section Registered </a>
       </div>
     </div>
   </li>
@@ -61,9 +61,9 @@
     <div id="TaskManagement" class="collapse" aria-labelledby="TaskManagement" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header"> Components: </h6>
-        <a class="collapse-item" href="buttons.php"> Task Import </a>
-        <a class="collapse-item" href="cards.php"> Task Registered </a>
-        <a class="collapse-item" href="cards.php"> Task Assignment </a>
+        <a class="collapse-item" href="task_import.php"> Task Import </a>
+        <a class="collapse-item" href="task_registered.php"> Task Registered </a>
+        <a class="collapse-item" href="task_assignment.php"> Task Assignment </a>
       </div>
     </div>
   </li>
@@ -85,13 +85,13 @@
   <hr class="sidebar-divider">
   <!-- Heading -->
   <div class="sidebar-heading"> Record </div>
-  <li class="nav-item"> <a class="nav-link" href="index.php"> <i class="fas fa-fw fa-calendar-day"> </i> <span> Day-off </span> </a> </li>
-  <li class="nav-item"> <a class="nav-link" href="index.php"> <i class="fas fa-fw fa-calendar-check"> </i> <span> Attendance </span> </a> </li>
-  <li class="nav-item"> <a class="nav-link" href="index.php"> <i class="fas fa-fw fa-scroll"> </i> <span> System </span> </a> </li>
+  <li class="nav-item"> <a class="nav-link" href="day_off.php"> <i class="fas fa-fw fa-calendar-day"> </i> <span> Day-off </span> </a> </li>
+  <li class="nav-item"> <a class="nav-link" href="attendance.php"> <i class="fas fa-fw fa-calendar-check"> </i> <span> Attendance </span> </a> </li>
+  <li class="nav-item"> <a class="nav-link" href="system_log.php"> <i class="fas fa-fw fa-scroll"> </i> <span> System </span> </a> </li>
   <hr class="sidebar-divider">
   <!-- Heading -->
   <div class="sidebar-heading"> Report </div>
-  <li class="nav-item"> <a class="nav-link" href="index.php"> <i class="fas fa-fw fa-file-pdf"> </i> <span> Performance </span> </a> </li>
+  <li class="nav-item"> <a class="nav-link" href="performance.php"> <i class="fas fa-fw fa-file-pdf"> </i> <span> Performance </span> </a> </li>
   <!-- Divider -->
   <hr class="sidebar-divider">
   <!-- Sidebar Toggler (Sidebar) -->
