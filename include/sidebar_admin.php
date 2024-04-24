@@ -1,4 +1,26 @@
-<?php include('connect.php') ?>
+<?php 
+  include('connect.php');
+  include('auth.php');
+
+  $con->next_result();
+  $query = mysqli_query($con, "SELECT * FROM accounts INNER JOIN  section ON section.sec_id=accounts.sec_id WHERE username='$username' ");
+  if (mysqli_num_rows($query)>0) { 
+    while ($row = $query->fetch_assoc()) {
+      $fname = $row['fname'];
+      $employee_name_temp = strtolower($row['fname'].' '.$row['lname']);
+      $employee_name = ucwords($employee_name_temp);
+      $card = $row['card'];
+      $email = $row['email'];
+      $sec = $row['sec_name'];
+      if (empty($row["file_name"])) {
+        $imageURL = '../../assets/img/user-profiles/nologo.png';
+      }
+      else {
+        $imageURL = '../../../assets/img/user-profiles/'.$row["file_name"];
+      }
+    }
+  }
+?>
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../admin/index.php">
@@ -10,54 +32,68 @@
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
   <!-- Nav Item - Dashboard -->
-  <li class="nav-item">
-    <a class="nav-link" href="dashboard.php">
-      <i class="fas fa-fw fa-tachometer-alt"> </i>
-      <span> Dashboard </span>
-    </a>
-  </li>
+  <li class="nav-item"> <a class="nav-link" href="index.php"> <i class="fas fa-fw fa-tachometer-alt"> </i> <span> Dashboard </span> </a> </li>
   <!-- Divider -->
   <hr class="sidebar-divider">
   <!-- Heading -->
-  <div class="sidebar-heading"> Interface </div>
-  <!-- Nav Item - Tables -->
-  <li class="nav-item">
-    <a class="nav-link" href="tables.php">
-      <i class="fas fa-fw fa-list"> </i>
-      <span> To-Do </span>
-    </a>
-  </li>
-  <!-- Nav Item - Tables -->
-  <li class="nav-item">
-    <a class="nav-link" href="tables.php">
-      <i class="fas fa-fw fa-circle-notch"> </i>
-      <span> In-Progress </span>
-    </a>
-  </li>
-  <!-- Nav Item - Tables -->
-  <li class="nav-item">
-    <a class="nav-link" href="tables.php">
-      <i class="fas fa-fw fa-check"> </i>
-      <span> Finished </span>
-    </a>
-  </li>
-  <!-- Utilities -->
+  <div class="sidebar-heading"> Management </div>
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-      <i class="fas fa-fw fa-archive"> </i>
-      <span> Records </span>
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#UserManagement" aria-expanded="true" aria-controls="UserManagement">
+      <i class="fas fa-fw fa-users-cog"> </i>
+      <span> User Management </span>
     </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div id="UserManagement" class="collapse" aria-labelledby="UserManagement" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header"> Components: </h6>
-        <a class="collapse-item" href="buttons.php"> Assigned Tasks </a>
-        <a class="collapse-item" href="cards.php"> Performance </a>
+        <a class="collapse-item" href="buttons.php"> Account Registered </a>
+        <a class="collapse-item" href="cards.php"> Department Registered </a>
+        <a class="collapse-item" href="cards.php"> Section Registered </a>
       </div>
     </div>
   </li>
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#TaskManagement" aria-expanded="true" aria-controls="TaskManagement">
+      <i class="fas fa-fw fa-tasks"> </i>
+      <span> Task Management </span>
+    </a>
+    <div id="TaskManagement" class="collapse" aria-labelledby="TaskManagement" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header"> Components: </h6>
+        <a class="collapse-item" href="buttons.php"> Task Import </a>
+        <a class="collapse-item" href="cards.php"> Task Registered </a>
+        <a class="collapse-item" href="cards.php"> Task Assignment </a>
+      </div>
+    </div>
+  </li>
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#DeployedTasks" aria-expanded="true" aria-controls="DeployedTasks">
+      <i class="fas fa-fw fa-rocket"> </i>
+      <span> Deployed Tasks </span>
+    </a>
+    <div id="DeployedTasks" class="collapse" aria-labelledby="DeployedTasks" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header"> Status: </h6>
+        <a class="collapse-item" href="tasks.php?status=NOT YET STARTED"> To-Do </a>
+        <a class="collapse-item" href="tasks.php?status=IN PROGRESS"> In-Progress </a>
+        <a class="collapse-item" href="tasks.php?status=FINISHED"> Finished </a>
+      </div>
+    </div>
+  </li>
+  <hr class="sidebar-divider">
+  <!-- Heading -->
+  <div class="sidebar-heading"> Record </div>
+  <li class="nav-item"> <a class="nav-link" href="index.php"> <i class="fas fa-fw fa-calendar-day"> </i> <span> Day-off </span> </a> </li>
+  <li class="nav-item"> <a class="nav-link" href="index.php"> <i class="fas fa-fw fa-calendar-check"> </i> <span> Attendance </span> </a> </li>
+  <li class="nav-item"> <a class="nav-link" href="index.php"> <i class="fas fa-fw fa-scroll"> </i> <span> System </span> </a> </li>
+  <hr class="sidebar-divider">
+  <!-- Heading -->
+  <div class="sidebar-heading"> Report </div>
+  <li class="nav-item"> <a class="nav-link" href="index.php"> <i class="fas fa-fw fa-file-pdf"> </i> <span> Performance </span> </a> </li>
   <!-- Divider -->
-  <hr class="sidebar-divider d-none d-md-block">
+  <hr class="sidebar-divider">
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">
     <button class="rounded-circle border-0" id="sidebarToggle"> </button>

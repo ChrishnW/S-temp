@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <!-- Link here -->
-  <?php include('../../include/link.php'); ?>
+  <?php include('../../include/link.php'); $page='Dashboard'?>
 </head>
 
 <body id="page-top">
@@ -36,7 +36,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
           </div>
 
           <!-- Content Row -->
@@ -56,7 +56,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row['total_tasks'] ?></div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      <a href="tasks.php"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
                     </div>
                   </div>
                 </div>
@@ -90,25 +90,29 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> System Logs Usage </div>
-                      <?php 
-                        $result = mysqli_query($con,"SELECT COUNT('case #') as logs FROM system_log");
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> System Usage </div>
+                      <?php
+                        // $result = mysqli_query($con,"SELECT COUNT('case #') as logs FROM system_log");
+                        // $row = $result->fetch_assoc();
+                        // $usage = ($row['logs'] / 10000) * 100;
+
+                        $result = mysqli_query($con,"SELECT table_schema AS 'Database', ROUND(SUM(data_length + index_length) / 1024 / 1024, 1) AS 'Size' FROM information_schema.tables WHERE table_schema = 'gtms'");
                         $row = $result->fetch_assoc();
-                        $usage = ($row['logs'] / 10000) * 100;
+                        $usage = $row['Size'];
                       ?>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $usage?>%</div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $usage?> MB</div>
                         </div>
                         <div class="col">
                           <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $row['on_going_tasks']?>%"></div>
+                            <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $usage ?>%"></div>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-cloud fa-2x text-gray-300"></i>
+                      <i class="fas fa-hdd fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
