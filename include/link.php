@@ -1,4 +1,5 @@
 <title>System Name</title>
+<link rel="shortcut icon" href="../../assets/img/gloryicon.png">
 
 <!-- Custom fonts for this template-->
 <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

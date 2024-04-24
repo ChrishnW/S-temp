@@ -48,6 +48,7 @@
                 <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr class="table-success">
+                      <th>Username ID</th>
                       <th>Employee</th>
                       <th>Section</th>
                       <th>Department</th>
@@ -56,6 +57,7 @@
                   </thead>
                   <tfoot>
                     <tr class="table-success">
+                      <th>Username ID</th>
                       <th>Employee</th>
                       <th>Section</th>
                       <th>Department</th>
@@ -77,6 +79,7 @@
                         $total_task=$count_task_row['total_task'];
                         echo "
                           <tr>
+                            <td>".$username."</td>
                             <td>".$emp_name."</td>
                             <td>".$section."</td>
                             <td>".$department."</td>
