@@ -45,9 +45,9 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
                   <thead>
-                    <tr>
+                    <tr class="table-success">
                       <th>Task Code</th>
                       <th>Legend</th>
                       <th>Task Name</th>
@@ -58,7 +58,7 @@
                     </tr>
                   </thead>
                   <tfoot>
-                    <tr>
+                    <tr class="table-success">
                       <th>Task Code</th>
                       <th>Legend</th>
                       <th>Task Name</th>
@@ -76,15 +76,24 @@
                         $result = mysqli_query($con,"SELECT *, (tasks_details.status) FROM tasks_details JOIN accounts ON accounts.username=tasks_details.in_charge JOIN task_class ON tasks_details.task_class=task_class.id WHERE tasks_details.task_status=1 AND tasks_details.status='$status'");
                         if (mysqli_num_rows($result)>0) { 
                           while ($row = $result->fetch_assoc()) {
+                            if ($row['status'] == 'NOT YET STARTED'){
+                              $label = 'danger';
+                            }
+                            elseif ($row['status'] == 'IN PROGRESS'){
+                              $label = 'warning';
+                            }
+                            elseif ($row['status'] == 'FINISHED'){
+                              $label = 'success';
+                            }
                             echo "
                             <tr>
                               <td>".$row['task_code']."</td>
                               <td>".$row['requirement_status']."</td>
                               <td>".$row['task_name']."</td>
                               <td>".$row['task_class']."</td>
-                              <td>".$row['due_date']."</td>
+                              <td>".date('d-m-Y h:i A', strtotime($row['due_date'].'16:00:00'))."</td>
                               <td>".$row['in_charge']."</td>
-                              <td>".$row['status']."</td>
+                              <td><span class='btn btn-$label btn-icon-split'><span class='text'>".$row['status']."</span></span></td>
                             </tr>";
                           }
                         }
@@ -94,15 +103,24 @@
                         $result = mysqli_query($con,"SELECT *, (tasks_details.status) FROM tasks_details JOIN accounts ON accounts.username=tasks_details.in_charge JOIN task_class ON tasks_details.task_class=task_class.id WHERE tasks_details.task_status=1");
                         if (mysqli_num_rows($result)>0) { 
                           while ($row = $result->fetch_assoc()) {
+                            if ($row['status'] == 'NOT YET STARTED'){
+                              $label = 'danger';
+                            }
+                            elseif ($row['status'] == 'IN PROGRESS'){
+                              $label = 'warning';
+                            }
+                            elseif ($row['status'] == 'FINISHED'){
+                              $label = 'success';
+                            }
                             echo "
                             <tr>
                               <td>".$row['task_code']."</td>
                               <td>".$row['requirement_status']."</td>
                               <td>".$row['task_name']."</td>
                               <td>".$row['task_class']."</td>
-                              <td>".$row['due_date']."</td>
+                              <td>".date('d-m-Y h:i A', strtotime($row['due_date'].'16:00:00'))."</td>
                               <td>".$row['in_charge']."</td>
-                              <td>".$row['status']."</td>
+                              <td><span class='btn btn-$label btn-icon-split'><span class='text'>".$row['status']."</span></span></td>
                             </tr>";
                           }
                         }
