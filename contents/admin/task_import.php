@@ -42,17 +42,17 @@
           <!-- Content Row -->
           <div class="row">
             <div class="col-lg-6">
-              <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Excel File</h6>
+              <div class="card border-primary shadow mb-4">
+                    <div class="card-header bg-primary py-3">
+                        <h6 class="m-0 font-weight-bold text-white">Excel File</h6>
                     </div>
                     <div class="card-body">
                       <form action="task_import_submit.php" method="POST" enctype="multipart/form-data">
-                        <input type="file" name="import_file" class="form-control" required/>
+                        <input type="file" class="form-control-file" name="import_file" required/>
                         <br>
                         <a class="pull-right" href="download.php">Download Tasks Excel Template For Import</a>
                         <br>
-                        <button type="submit" name="save_excel_data" class="btn btn-success mt-3">Import</button>
+                        <button type="submit" name="save_excel_data" class="btn btn-success mt-3"><i class="fas fa-fw fa-file-import"></i> Import</button>
 										</form>
                     </div>
                 </div>
