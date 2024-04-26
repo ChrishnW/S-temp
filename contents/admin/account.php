@@ -71,12 +71,12 @@
                   <tbody>
                     <?php
                       $con->next_result();
-                      $result = mysqli_query($con,"SELECT accounts.fname, accounts.lname, accounts.file_name , accounts.username, accounts.email, section.sec_name, access.access, accounts.status, accounts.id, department.dept_name FROM accounts JOIN section ON accounts.sec_id=section.sec_id JOIN access on accounts.access=access.id JOIN department ON department.dept_id=section.dept_id WHERE accounts.status='1'");
+                      $result = mysqli_query($con,"SELECT accounts.fname, accounts.lname, accounts.file_name , accounts.username, accounts.email, section.sec_name, access.access, accounts.status, accounts.id, department.dept_name, accounts.card FROM accounts JOIN section ON accounts.sec_id=section.sec_id JOIN access on accounts.access=access.id JOIN department ON department.dept_id=section.dept_id WHERE accounts.status='1'");
                       if (mysqli_num_rows($result)>0) { 
                         while ($row = $result->fetch_assoc()) {
                           echo "
                           <tr>
-												    <td> <center /><a href='account_edit.php?id=".$row['id']."' <button class='btn btn-primary' ><i class='fa fa-edit fa-1x'></i> Edit</button></a> </td>                                                   
+                            <td> <center /><button class='btn btn-primary' value='".$row['id']."' data-fname='".$row['fname']."' data-lname='".$row['lname']."' data-username='".$row['username']."' data-email='".$row['email']."' data-card='".$row['card']."' data-dept='".$row['dept_name']."' data-sec='".$row['sec_name']."' onclick='password_userID(this)'><i class='fa fa-edit fa-1x'></i> Edit</button></td>
                             <td>".$row['fname'].' '.$row['lname']."</td>
                             <td>".$row['username']."</td>
                             <td>".$row['access']."</td>

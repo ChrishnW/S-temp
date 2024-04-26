@@ -31,11 +31,12 @@
 				$_SESSION['SESS_MEMBER_ACCESS'] = $access;
 				$_SESSION['SESS_MEMBER_PASS'] = $hash_password;
 				session_write_close();
-				
-				$systemlog = "INSERT INTO system_log (action, date_created, user) VALUES ('Account login.', '$systemtime', '$username')";
-				$result = mysqli_query($con, $systemlog);
-				header("location: contents/admin/index.php");
-				exit();
+
+				// Redirect to access page
+				$con->next_result();
+				$query = mysqli_query($con,"SELECT * FROM accounts JOIN access ON access.id=accounts.access WHERE username = '$username'");
+				$result = mysqli_fetch_assoc($query);
+				header("location: ".$result['link']."");
 			}
 		}
 		else {
