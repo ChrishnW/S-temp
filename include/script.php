@@ -19,27 +19,26 @@
 <script src="../../assets/js/demo/chart-pie-demo.js"></script>
 <script src="../../assets/js/demo/chart-bar-demo.js"></script>
 
-<!-- Custom Functions -->
 <script>
-  function password_userID(element){
-    var user_id       = element.value;
+  // Account Edit
+  function account_edit(element) {
+    var user_id = element.value;
     var username_temp = element.getAttribute("data-username");
-    var fname_temp    = element.getAttribute("data-fname");
-    var lname_temp    = element.getAttribute("data-lname");
-    var email_temp    = element.getAttribute("data-email");
-    var card_temp     = element.getAttribute("data-card");
-    var dept_temp     = element.getAttribute("data-dept");
-    var sec_temp      = element.getAttribute("data-sec");
-    console.log("Send Data:", user_id, fname_temp);
-    $(document).ready(function () {
+    var fname_temp = element.getAttribute("data-fname");
+    var lname_temp = element.getAttribute("data-lname");
+    var email_temp = element.getAttribute("data-email");
+    var empnum_temp = element.getAttribute("data-emp_num");
+    var card_temp = element.getAttribute("data-card");
+    var access_temp = element.getAttribute("data-access");
+    $(document).ready(function() {
       $('#accounteditModal').modal('show');
       document.getElementById('accounts_username').value = username_temp;
       document.getElementById('accounts_fname').value = fname_temp;
       document.getElementById('accounts_lname').value = lname_temp;
       document.getElementById('accounts_email').value = email_temp;
+      document.getElementById('accounts_number').value = empnum_temp;
       document.getElementById('accounts_card').value = card_temp;
-      document.getElementById('accounts_dept').value = dept_temp;
-      document.getElementById('accounts_sec').value = sec_temp;
+      document.getElementById('accounts_access').innerHTML = access_temp;
     })
   }
 </script>
