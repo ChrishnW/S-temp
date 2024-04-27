@@ -76,7 +76,7 @@
                         while ($row = $result->fetch_assoc()) {
                           echo "
                           <tr>
-                            <td> <center /><button class='btn btn-primary' value='".$row['id']."' data-fname='".$row['fname']."' data-lname='".$row['lname']."' data-username='".$row['username']."' data-email='".$row['email']."' data-emp_num='".$row['employee_id']."' data-card='".$row['card']."' data-access='".$row['access']."' onclick='account_edit(this)'><i class='fa fa-edit fa-1x'></i> Edit</button></td>
+                            <td> <center /><a href='account_edit.php?account_id=".$row['id']."'><button class='btn btn-primary''><i class='fa fa-edit fa-1x'></i> Edit</button></a></td>
                             <td>".$row['fname'].' '.$row['lname']."</td>
                             <td>".$row['username']."</td>
                             <td>".$row['access']."</td>

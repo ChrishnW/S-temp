@@ -62,8 +62,7 @@
             <div class="col-md-4"> 
               <div class="form-group required">
                 <label>Access:</label>
-                <select name="accounts_access" id="accounts_access" class="form-control">
-                  <option value='<?php echo $account_access?>' selected><i id='accounts_access'>[Selected]</i></option>
+                <select name="accounts_select_access" id="accounts_select_access" class="form-control">
                   <?php
                     $con->next_result();
                     $sql = mysqli_query($con, "SELECT * FROM access");
@@ -81,8 +80,8 @@
               <div class="form-group required">
                 <label>Status:</label>
                 <select name="accounts_status" id="accounts_status" class="form-control">
-                    <option selected value='0'>INACTIVE</option>
-                    <option value='1'>ACTIVE</option>";
+                  <option value='1'>ACTIVE</option>";
+                  <option value='0'>DEACTIVE</option>
                 </select>
               </div>
             </div>
@@ -119,7 +118,7 @@
           </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="../../include/logout.php">Submit</a>
+            <a class="btn btn-primary" href="#">Submit</a>
           </div>
         </form>
       </div>

@@ -1,3 +1,6 @@
+<!-- Modals -->
+<?php include('modal.php') ?>
+
 <!-- Bootstrap core JavaScript-->
 <script src="../../assets/vendor/jquery/jquery.min.js"></script>
 <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -29,7 +32,7 @@
     var email_temp = element.getAttribute("data-email");
     var empnum_temp = element.getAttribute("data-emp_num");
     var card_temp = element.getAttribute("data-card");
-    var access_temp = element.getAttribute("data-access");
+    var access_temp = element.getAttribute("data-access").toUpperCase() ;
     $(document).ready(function() {
       $('#accounteditModal').modal('show');
       document.getElementById('accounts_username').value = username_temp;
@@ -38,10 +41,6 @@
       document.getElementById('accounts_email').value = email_temp;
       document.getElementById('accounts_number').value = empnum_temp;
       document.getElementById('accounts_card').value = card_temp;
-      document.getElementById('accounts_access').innerHTML = access_temp;
     })
   }
 </script>
-
-<!-- Modals -->
-<?php include('modal.php') ?>

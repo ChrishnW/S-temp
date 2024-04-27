@@ -14,3 +14,5 @@
 
 <!-- Custom fonts for this template-->
 <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+<?php include('../../include/process.php') ?>
