@@ -39,93 +39,102 @@
             <form class="className" name="form" id="form" action="../../include/process.php" method="POST">
               <div class="row">
                 <div class="col-md-4">
-                  <div class="form-group required">
+                  <div class="form-group">
                     <label>User Name:</label>
-                    <input type="text" placeholder="Enter User Name" class="form-control" name="accounts_username" id="accounts_username" value="<?php echo $employee_username ?>">
-                    <input type="hidden" class="form-control" name="id" id="id" required>
+                    <input type="hidden" placeholder="Account Series Number" class="form-control" name="accounts_index" id="accounts_index" value="<?php echo $accounts_number ?>" required>
+                    <input type="text" placeholder="Enter User Name" class="form-control" name="accounts_username" id="accounts_username" value="<?php echo $employee_username ?>" required>
                   </div>
                 </div>
                 <div class="col-md-4"> 
-                  <div class="form-group required">
+                  <div class="form-group">
                     <label>First Name:</label>
-                    <input type="text" placeholder="Enter First Name" class="form-control" name="accounts_fname" id="accounts_fname"  value="<?php echo $employee_fname ?>">
+                    <input type="text" placeholder="Enter First Name" class="form-control" name="accounts_fname" id="accounts_fname"  value="<?php echo $employee_fname ?>" required>
                   </div>
                 </div>
                 <div class="col-md-4"> 
-                  <div class="form-group required">
+                  <div class="form-group">
                     <label>Last Name:</label>
-                    <input type="text" placeholder="Enter Last Name" class="form-control" name="accounts_lname" id="accounts_lname"  value="<?php echo $employee_lname ?>">
+                    <input type="text" placeholder="Enter Last Name" class="form-control" name="accounts_lname" id="accounts_lname"  value="<?php echo $employee_lname ?>" required>
                   </div>
                 </div>
                 <div class="col-md-4"> 
-                  <div class="form-group required">
+                  <div class="form-group">
                     <label>Employee ID:</label>
-                    <input type="text" placeholder="Enter Employee ID" class="form-control" name="accounts_number" id="accounts_number"  value="<?php echo $employee_id ?>">
+                    <input type="text" placeholder="Enter Employee ID" class="form-control" name="accounts_number" id="accounts_number"  value="<?php echo $employee_id ?>" required>
                   </div>
                 </div>
                 <div class="col-md-4"> 
-                  <div class="form-group required">
+                  <div class="form-group">
                     <label>ID Number:</label>
-                    <input type="text" placeholder="Enter ID Number" class="form-control" name="accounts_card" id="accounts_card"  value="<?php echo $employee_card ?>">
+                    <input type="text" placeholder="Enter ID Number" class="form-control" name="accounts_card" id="accounts_card"  value="<?php echo $employee_card ?>" required>
                   </div>
                 </div>
                 <div class="col-md-4"> 
-                  <div class="form-group required">
+                  <div class="form-group">
                     <label>Access:</label>
-                    <select name="accounts_select_access" id="accounts_select_access" class="form-control">
-                    <option value="<?php echo $access_idaccount_access; ?>" selected disabled><?php echo $account_access; ?> [Current]</option>
+                    <select class="form-control" name="accounts_access" id="accounts_access">
                       <?php
                         $con->next_result();
                         $sql = mysqli_query($con, "SELECT * FROM access");
                         if (mysqli_num_rows($sql) > 0) {
                           while ($row = mysqli_fetch_assoc($sql)) {
-                            $access_select = strtoupper($row['access']);
-                            echo "<option value='" . $access_select . "'>" . $access_select . "</option>";
-                          }
-                        } 
-                      ?>
+                            if (strtoupper($row['access']) == $account_access) { $label = '[Current]'; $select = 'selected'; } else { $label = ''; $select = '';}?>
+                            <option value='<?php echo $row['access'] ?>' <?php echo $select ?>><?php echo strtoupper($row['access']).' '.$label ?></option>
+                          <?php }
+                        } ?>
                     </select>
                   </div>
                 </div>
                 <div class="col-md-4"> 
-                  <div class="form-group required">
+                  <div class="form-group">
                     <label>Status:</label>
-                    <select name="accounts_status" id="accounts_status" class="form-control">
-                      <option value='1'>ACTIVE</option>";
+                    <select class="form-control" name="accounts_status" id="accounts_status">
+                      <?php if ($account_status == 1) {?>
+                      <option value='1' selected>ACTIVE</option>
                       <option value='0'>DEACTIVE</option>
+                      <?php } elseif ($account_status == 0) { ?>
+                      <option value='1'>ACTIVE</option>
+                      <option value='0' selected>DEACTIVE</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
-                <div class="col-md-4"> 
-                  <div class="form-group required">
+                <div class="col-md-5"> 
+                  <div class="form-group">
                     <label>Department:</label>
-                    <select class="form-control">
-                        <option value="" selected></option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-4"> 
-                  <div class="form-group required">
-                    <label>Section:</label>
-                    <select name="accounts_access" id="accounts_access" class="form-control">
-                    <option value="<?php echo $account_section; ?>" selected disabled><?php echo $account_section; ?> [Current]</option>
+                    <select class="form-control" id="accounts_dept" name="accounts_dept">
                       <?php
-                        $sql = mysqli_query($con,"SELECT * FROM section WHERE status='1'"); 
                         $con->next_result();
+                        $sql = mysqli_query($con,"SELECT * FROM department WHERE status='1'"); 
                         if(mysqli_num_rows($sql)>0){
                           while($row=mysqli_fetch_assoc($sql)){
-                            $sec_id1 = $row['sec_id'];
-                            $sec_name1 = $row['sec_name'];
-                            echo "<option value='".$sec_id1."'>".$sec_name1."</option>";
-                          }
+                            if ($row['dept_name'] == $account_department) { $label = '[Current]'; $select = 'selected'; } else { $label = ''; $select = '';}?>
+                            <option value='<?php echo $row['dept_name'] ?>' <?php echo $select ?>><?php echo $row['dept_name'].' '.$label ?></option>
+                          <?php }
+                        } ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-3"> 
+                  <div class="form-group">
+                    <label>Section:</label>
+                    <select name="accounts_sec" id="accounts_sec" class="form-control">
+                      <?php
+                        $con->next_result();
+                        $sql = mysqli_query($con,"SELECT * FROM section WHERE status='1'"); 
+                        if(mysqli_num_rows($sql)>0){
+                          while($row=mysqli_fetch_assoc($sql)){
+                            if ($row['sec_name'] == $account_section) { $label = '[Current]'; $select = 'selected'; } else { $label = ''; $select = '';}?>
+                            <option value='<?php echo $row['sec_name'] ?>' <?php echo $select ?>><?php echo $row['sec_name'].' '.$label ?></option>
+                          <?php }
                         } ?>
                     </select>
                   </div>
                 </div>
                 <div class="col-md-6"> 
-                  <div class="form-group required">
+                  <div class="form-group">
                     <label>E-mail:</label>
-                    <input type="text" placeholder="Enter E-mail" class="form-control" name="accounts_email" id="accounts_email"  value="<?php echo $employee_email ?>">
+                    <input type="text" placeholder="Enter E-mail" class="form-control" name="accounts_email" id="accounts_email"  value="<?php echo $employee_email ?>" required>
                   </div>
                 </div>
                 <div class="col-md-3">
@@ -138,8 +147,8 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" onclick="history.back()">Cancel</button>
-                <a class="btn btn-primary" href="#">Submit</a>
+                <button class="btn btn-secondary" type="button" onclick="history.back()"><i class="fas fa-times-circle fa-fw"></i> Cancel</button>
+                <button id="submit" type="submit" class="btn btn-success"><i class="fas fa-check fa-fw"></i> Submit</button>
               </div>
             </form>
           </div>

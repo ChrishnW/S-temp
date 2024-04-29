@@ -51,9 +51,9 @@
                       <th>Action</th>
                       <th>Name</th>
                       <th>UserID</th>
-                      <th>Access</th>
                       <th>Section</th>
                       <th>Department</th>
+                      <th>Access</th>
                       <th>Status</th>
                     </tr>
                   </thead>
@@ -62,27 +62,33 @@
                       <th>Action</th>
                       <th>Name</th>
                       <th>UserID</th>
-                      <th>Access</th>
                       <th>Section</th>
                       <th>Department</th>
+                      <th>Access</th>
                       <th>Status</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <?php
                       $con->next_result();
-                      $result = mysqli_query($con,"SELECT accounts.fname, accounts.lname, accounts.file_name , accounts.username, accounts.email, section.sec_name, access.access, accounts.status, accounts.id, department.dept_name, accounts.card, accounts.employee_id FROM accounts JOIN section ON accounts.sec_id=section.sec_id JOIN access on accounts.access=access.id JOIN department ON department.dept_id=section.dept_id WHERE accounts.status='1'");
+                      $result = mysqli_query($con,"SELECT accounts.fname, accounts.lname, accounts.file_name , accounts.username, accounts.email, section.sec_name, access.access, accounts.status, accounts.id, department.dept_name, accounts.card, accounts.employee_id FROM accounts JOIN section ON accounts.sec_id=section.sec_id JOIN access on accounts.access=access.id JOIN department ON department.dept_id=section.dept_id");
                       if (mysqli_num_rows($result)>0) { 
                         while ($row = $result->fetch_assoc()) {
+                          if ($row['status'] == 1){
+                            $label = "<button type='button' class='btn btn-success'>Active</button>";
+                          }
+                          else if ($row['status'] == 0){
+                            $label = "<button type='button' class='btn btn-danger'>Deactive</button>";
+                          }
                           echo "
                           <tr>
-                            <td> <center /><a href='account_edit.php?account_id=".$row['id']."'><button class='btn btn-primary''><i class='fa fa-edit fa-1x'></i> Edit</button></a></td>
+                            <td><a href='account_edit.php?account_id=".$row['id']."'><button class='btn btn-primary''><i class='fas fa-edit fa-fw'></i> Edit</button></a></td>
                             <td>".$row['fname'].' '.$row['lname']."</td>
                             <td>".$row['username']."</td>
-                            <td>".$row['access']."</td>
                             <td>".$row['sec_name']."</td>
                             <td>".$row['dept_name']."</td>
-                            <td>".$row['status']."</td>
+                            <td><center/>".strtoupper($row['access'])."</td>
+                            <td><center/>".$label."</td>
                           </tr>";
                         }
                       }
