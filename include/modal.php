@@ -105,3 +105,114 @@
     </div>
   </div>
 </div>
+
+<!-- Create Account Modal -->
+<div class="modal fade" id="accountCreateModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content border-primary">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Create New Account</h5>
+        <a href="#" data-dismiss="modal"><i class="fas fa-times text-dark"></i></a>
+      </div>
+      <div class="modal-body bg-gradient-light">
+        <form class="needs-validation" action="../../include/process.php" method="POST" novalidate>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>User Name:</label>
+                <input type="text" placeholder="Enter User Name" class="form-control" name="create_create_accounts_username" id="create_accounts_username" required>
+              </div>
+            </div>
+            <div class="col-md-4"> 
+              <div class="form-group">
+                <label>First Name:</label>
+                <input type="text" placeholder="Enter First Name" class="form-control" name="create_accounts_fname" id="create_accounts_fname" required>
+              </div>
+            </div>
+            <div class="col-md-4"> 
+              <div class="form-group">
+                <label>Last Name:</label>
+                <input type="text" placeholder="Enter Last Name" class="form-control" name="create_accounts_lname" id="create_accounts_lname" required>
+              </div>
+            </div>
+            <div class="col-md-4"> 
+              <div class="form-group">
+                <label>Employee ID:</label>
+                <input type="text" placeholder="Enter Employee ID" class="form-control" name="create_accounts_number" id="create_accounts_number" required>
+              </div>
+            </div>
+            <div class="col-md-4"> 
+              <div class="form-group">
+                <label>ID Number:</label>
+                <input type="text" placeholder="Enter ID Number" class="form-control" name="create_accounts_card" id="create_accounts_card" required>
+              </div>
+            </div>
+            <div class="col-md-4"> 
+              <div class="form-group">
+                <label>Access:</label>
+                <select class="form-control custom-select" name="create_accounts_access" id="create_accounts_access">
+                  <?php
+                    $con->next_result();
+                    $sql = mysqli_query($con, "SELECT * FROM access");
+                    if (mysqli_num_rows($sql) > 0) {
+                      while ($row = mysqli_fetch_assoc($sql)) {
+                        if (strtoupper($row['access']) == $account_access) { $label = '[Current]'; $select = 'selected'; } else { $label = ''; $select = '';}?>
+                        <option value='<?php echo $row['id'] ?>' <?php echo $select ?>><?php echo strtoupper($row['access']).' '.$label ?></option>
+                      <?php }
+                    } ?>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4"> 
+              <div class="form-group">
+                <label>Department:</label>
+                <select class="form-control custom-select" id="create_accounts_dept" name="create_accounts_dept">
+                  <?php
+                    $con->next_result();
+                    $sql = mysqli_query($con,"SELECT * FROM department WHERE status='1'"); 
+                    if(mysqli_num_rows($sql)>0){
+                      while($row=mysqli_fetch_assoc($sql)){
+                        if ($row['dept_name'] == $account_department) { $label = '[Current]'; $select = 'selected'; } else { $label = ''; $select = '';}?>
+                        <option value='<?php echo $row['dept_name'] ?>' <?php echo $select ?>><?php echo $row['dept_name'].' '.$label ?></option>
+                      <?php }
+                    } ?>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4"> 
+              <div class="form-group">
+                <label>Section:</label>
+                <select name="create_accounts_sec" id="create_accounts_sec" class="form-control custom-select">
+                  <?php
+                    $con->next_result();
+                    $sql = mysqli_query($con,"SELECT * FROM section WHERE status='1'"); 
+                    if(mysqli_num_rows($sql)>0){
+                      while($row=mysqli_fetch_assoc($sql)){
+                        if ($row['sec_name'] == $account_section) { $label = '[Current]'; $select = 'selected'; } else { $label = ''; $select = '';}?>
+                        <option value='<?php echo $row['sec_id'] ?>' <?php echo $select ?>><?php echo $row['sec_name'].' '.$label ?></option>
+                      <?php }
+                    } ?>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4"> 
+              <div class="form-group">
+                <label>E-mail:</label>
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input type="text" placeholder="Enter E-mail" class="form-control" name="create_accounts_email" id="create_accounts_email" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal"><i class="fas fa-times-circle fa-fw"></i> Cancel</button>
+            <button id="submit" type="submit" class="btn btn-success"><i class="fas fa-check fa-fw"></i> Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
