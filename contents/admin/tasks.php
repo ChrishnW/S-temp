@@ -36,7 +36,16 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Tasks</h1>
-          <p class="mb-4">Put something here.</p>
+          <div class="row">
+            <div class='form-group col-lg-2'>
+              <label>From:</label>
+              <input type='date' class='form-control' name='val_from' id='val_from' onchange='selectfrom(this)'>
+            </div>
+            <div class='form-group col-lg-2'>
+              <label>To:</label>
+              <input type='date' class='form-control' name='val_to' id='val_to' onchange='selectto(this)'>
+            </div>
+          </div>
 
           <!-- DataTales Example -->
           <div class="card border-primary shadow mb-4">

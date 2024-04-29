@@ -39,9 +39,19 @@
           <p class="mb-4">Put something here.</p>
 
           <!-- DataTales Example -->
-          <div class="card border-primary shadow mb-4">
-            <div class="card-header bg-primary py-3">
+          <div class="card border-primary shadow mb-4 ">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
               <h6 class="m-0 font-weight-bold text-white">Registered Accounts</h6>
+                <div class="dropdown no-arrow">
+                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">Utilities:</div>
+                    <a class="dropdown-item" href="#">Create Account</a>
+                    <a class="dropdown-item" href="#">Delete Account</a>
+                  </div>
+                </div>
             </div>
             <div class="card-body">
               <div class="table-responsive">
