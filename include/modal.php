@@ -18,109 +18,53 @@
   </div>
 </div>
 
-<div class="modal fade" id="accounteditModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document">
+<!-- Password Change Modal -->
+<div class="modal fade" id="accountChangePassModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-primary">
       <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">Account Edit</h5>
+        <h5 class="modal-title">Change Account Password</h5>
         <a href="#" data-dismiss="modal"><i class="fas fa-times text-dark"></i></a>
       </div>
       <div class="modal-body bg-gradient-light">
-        <form class="className" name="form" id="form" action="../../include/process.php" method="POST">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="form-group required">
-                <label>User Name:</label>
-                <input type="text" placeholder="Enter User Name" class="form-control" name="accounts_username" id="accounts_username" pattern="[a-zA-Z0-9-/ ]+" data-error="Invalid input!">
-                <input type="hidden" class="form-control" name="id" id="id" required>
-              </div>
+        <form action="../../include/process.php" method="post">
+          <div class="col-md-12">
+            <div class="form-group required">
+              <label>New Password:</label>
+              <input type="hidden" class="form-control" name="cp_index" id="cp_index" value="<?php echo $accounts_number?>" required>
+              <input type="text" class="form-control" name="new_pass" id="new_pass" placeholder="Enter New Password" required>
             </div>
-            <div class="col-md-4"> 
-              <div class="form-group required">
-                <label>First Name:</label>
-                <input type="text" placeholder="Enter First Name" class="form-control" name="accounts_fname" id="accounts_fname" pattern="[a-zA-Z0-9-/ ]+" data-error="Invalid input!">
-              </div>
-            </div>
-            <div class="col-md-4"> 
-              <div class="form-group required">
-                <label>Last Name:</label>
-                <input type="text" placeholder="Enter Last Name" class="form-control" name="accounts_lname" id="accounts_lname" pattern="[a-zA-Z0-9-/ ]+" data-error="Invalid input!">
-              </div>
-            </div>
-            <div class="col-md-4"> 
-              <div class="form-group required">
-                <label>Employee ID:</label>
-                <input type="text" placeholder="Enter Employee ID" class="form-control" name="accounts_number" id="accounts_number">
-              </div>
-            </div>
-            <div class="col-md-4"> 
-              <div class="form-group required">
-                <label>ID Number:</label>
-                <input type="text" placeholder="Enter ID Number" class="form-control" name="accounts_card" id="accounts_card">
-              </div>
-            </div>
-            <div class="col-md-4"> 
-              <div class="form-group required">
-                <label>Access:</label>
-                <select name="accounts_select_access" id="accounts_select_access" class="form-control">
-                  <?php
-                    $con->next_result();
-                    $sql = mysqli_query($con, "SELECT * FROM access");
-                    if (mysqli_num_rows($sql) > 0) {
-                      while ($row = mysqli_fetch_assoc($sql)) {
-                        $access_select = strtoupper($row['access']);
-                        echo "<option value='" . $access_select . "'>" . $access_select . "</option>";
-                      }
-                    } 
-                  ?>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-4"> 
-              <div class="form-group required">
-                <label>Status:</label>
-                <select name="accounts_status" id="accounts_status" class="form-control">
-                  <option value='1'>ACTIVE</option>";
-                  <option value='0'>DEACTIVE</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-4"> 
-              <div class="form-group required">
-                <label>Department:</label>
-                <select class="form-control">
-                    <option value="" selected></option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-4"> 
-              <div class="form-group required">
-                <label>Section:</label>
-                <select name="accounts_access" id="accounts_access" class="form-control">
-
-                </select>
-              </div>
-            </div>
-            <div class="col-md-6"> 
-              <div class="form-group required">
-                <label>E-mail:</label>
-                <input type="text" placeholder="Enter E-mail" class="form-control" name="accounts_email" id="accounts_email">
-              </div>
-            </div>
-            <div class="col-md-3">
-              <label>Account:</label>
-              <a href="#" class='button btn btn-danger form-control'><i class="fas fa-undo fa-fw"></i> Reset Password</a>
-            </div>
-            <div class="col-md-3">
-              <label>Account:</label>
-              <a href="#" class='button btn btn-warning form-control shadow' data-toggle="modal" data-target="#logoutModal"><i class="fas fa-unlock-alt fa-fw"></i> Change Password</a>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group required">
+              <label>Confirm Password:</label>
+              <input type="text" class="form-control" name="confirm_pass" id="confirm_pass" placeholder="Re-Enter New Password" required>
             </div>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="#">Submit</a>
+            <button type="cancel" class="btn btn-secondary" data-dismiss="modal"> Cancel</button>
+            <button type="submit" class="btn btn-primary"> Confirm</a>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Password Reset Modal-->
+<div class="modal fade" id="accountResetPassModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-danger">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Notice</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">You're about to reset this account password to default. <br> Do you wish to contiue?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cancel</button>
+        <a href="../../include/process.php?reset_account=<?php echo $accounts_number?>" class="btn btn-primary"> Confirm</a>
       </div>
     </div>
   </div>
