@@ -44,7 +44,7 @@
               <h6 class="m-0 font-weight-bold text-white">Registered Accounts</h6>
                 <div class="dropdown no-arrow">
                   <span class="text-white" data-toggle="modal" data-target="#accountCreateModal">
-                    <i class="fas fa-plus fa-sm fa-fw text-gray-400"></i> Create New Account
+                    <i class="fas fa-plus fa-sm fa-fw text-gray-400"></i> Register New Account
                   </span>
                 </div>
             </div>
