@@ -1,5 +1,27 @@
 <?php
+  include('auth.php');
   include('connect.php');
+  
+  if(isset($_SESSION['SESS_MEMBER_ID'])){
+    $con->next_result();
+    $query = mysqli_query($con, "SELECT * FROM accounts INNER JOIN  section ON section.sec_id=accounts.sec_id WHERE username='$username' ");
+    if (mysqli_num_rows($query)>0) { 
+      while ($row = $query->fetch_assoc()) {
+        $fname = $row['fname'];
+        $employee_name_temp = strtolower($row['fname'].' '.$row['lname']);
+        $employee_name = ucwords($employee_name_temp);
+        $card = $row['card'];
+        $email = $row['email'];
+        $sec = $row['sec_name'];
+        if (empty($row["file_name"])) {
+          $imageURL = '../../assets/img/user-profiles/nologo.png';
+        }
+        else {
+          $imageURL = '../../../assets/img/user-profiles/'.$row["file_name"];
+        }
+      }
+    }
+  }
 
   if(isset($_GET['account_id'])){
     $con->next_result();
@@ -51,8 +73,9 @@
     $hash_default_pass = password_hash($default_pass, PASSWORD_DEFAULT);
     $update = "UPDATE accounts SET password='$hash_default_pass' WHERE id='$pass_index'";
     $result = mysqli_query($con, $update);
-    echo '<script>alert("Success")</script>';
-    echo '<script>history.back()</script>';
+    // echo '<script>alert("Success")</script>';
+    // echo '<script>history.back()</script>';
+    echo "<script> $(function() { $('#success').modal('show'); }); </script>";
   }
 
   if(isset($_POST['new_pass'])){
@@ -99,4 +122,5 @@
       echo '<script>history.back()</script>';
     }
   }
+  include('../../include/modal.php');
 ?>

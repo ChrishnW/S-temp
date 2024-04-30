@@ -1,26 +1,3 @@
-<?php 
-  include('connect.php');
-  include('auth.php');
-
-  $con->next_result();
-  $query = mysqli_query($con, "SELECT * FROM accounts INNER JOIN  section ON section.sec_id=accounts.sec_id WHERE username='$username' ");
-  if (mysqli_num_rows($query)>0) { 
-    while ($row = $query->fetch_assoc()) {
-      $fname = $row['fname'];
-      $employee_name_temp = strtolower($row['fname'].' '.$row['lname']);
-      $employee_name = ucwords($employee_name_temp);
-      $card = $row['card'];
-      $email = $row['email'];
-      $sec = $row['sec_name'];
-      if (empty($row["file_name"])) {
-        $imageURL = '../../assets/img/user-profiles/nologo.png';
-      }
-      else {
-        $imageURL = '../../../assets/img/user-profiles/'.$row["file_name"];
-      }
-    }
-  }
-?>
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../admin/index.php">

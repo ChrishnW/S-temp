@@ -44,7 +44,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>User Name:</label>
-                      <input type="hidden" placeholder="Account Series Number" class="form-control" name="accounts_index" id="accounts_index" value="<?php echo $accounts_number ?>" required>
+                      <input type="text" placeholder="Account Series Number" class="form-control" name="accounts_index" id="accounts_index" value="<?php echo $accounts_number ?>" required>
                       <input type="text" placeholder="Enter User Name" class="form-control" name="accounts_username" id="accounts_username" value="<?php echo $employee_username ?>" disabled required>
                     </div>
                   </div>
