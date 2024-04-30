@@ -1,3 +1,10 @@
+<?php
+	include('include/login.php'); 
+	
+	if(isset($_SESSION['SESS_MEMBER_ID'])){    
+		header('location: include/home.php');
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
