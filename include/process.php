@@ -126,5 +126,38 @@
     }
   }
 
+  if(isset($_GET['sc_id'])){
+    $con->next_result();
+    $sc_id = $_GET['sc_id'];
+    $query  = mysqli_query($con, "SELECT * FROM section WHERE id='$sc_id'");       
+    $row    = mysqli_fetch_assoc($query);
+    $sec_id     = $row['id'];
+    $sec_code   = $row['sec_id'];
+    $sec_name   = $row['sec_name'];
+    $sec_dept   = $row['dept_id'];
+    $sec_status = $row['status'];
+  }
+
+  if(isset($_POST['section_id'])){
+    $con->next_result();
+    $sec_id      = $_POST['section_id'];
+    $sec_code    = $_POST['section_code'];
+    $sec_name    = $_POST['section_name'];
+    $sec_dept    = $_POST['section_dept'];
+    $sec_status  = $_POST['section_status'];
+    $check = mysqli_query($con,"SELECT * FROM section WHERE sec_id='$sec_code' AND sec_name='$sec_name' AND dept_id='$sec_dept' AND status='$sec_status'");
+    $check_row = mysqli_num_rows($check);
+    if ($check_row > 0){
+      echo '<script>alert("Failed")</script>';
+      echo '<script>history.back()</script>';
+    }
+    else {
+      $update = "UPDATE section SET sec_id=UPPER('$sec_code'), sec_name=UPPER('$sec_name'), dept_id='$sec_dept', status='$sec_status' WHERE id='$sec_id'";
+      $result = mysqli_query($con, $update);
+      echo '<script>alert("Success")</script>';
+      echo '<script>history.back()</script>';
+    }
+  }
+
   include('modal.php');
 ?>

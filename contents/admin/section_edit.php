@@ -9,7 +9,7 @@
   <meta name="author" content="">
 
   <?php include('../../include/link.php');
-  $page = 'User Management \ Department Edit' ?>
+  $page = 'User Management \ Section Edit' ?>
 </head>
 
 <body id="page-top">
@@ -36,32 +36,40 @@
 
         <div class="card shadow mb-4 border-primary">
             <div class="card-header py-3 bg-primary">
-                <h6 class="m-0 font-weight-bold text-white">Department Edit</h6>
+                <h6 class="m-0 font-weight-bold text-white">Section Edit</h6>
             </div>
             <div class="card-body bg-gradient-light">
               <form class="needs-validation" action="../../include/process.php" method="POST" novalidate>
                 <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-2">
                     <div class="form-group">
-                      <label>Department Code:</label>
-                      <input type="hidden" placeholder="Enter Code" class="form-control" name="department_id" id="department_id" value="<?php echo $department_id?>" required>
-                      <input type="text" placeholder="Enter Code" class="form-control" name="department_code" id="department_code" value="<?php echo $department_code?>" required>
+                      <label>Section Code:</label>
+                      <input type="hidden" placeholder="Enter Code" class="form-control" name="section_id" id="section_id" value="<?php echo $sec_id?>" required>
+                      <input type="text" placeholder="Enter Code" class="form-control" name="section_code" id="section_code" value="<?php echo $sec_code?>" required>
                     </div>
                   </div>
+                  <div class="col-md-2"> 
+                    <div class="form-group">
+                      <label>Department Code:</label>
+                      <input type="text" placeholder="Enter Name" class="form-control" name="section_dept" id="section_dept" value="<?php echo $sec_dept?>" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
                   <div class="col-md-4"> 
                     <div class="form-group">
-                      <label>Department Name:</label>
-                      <input type="text" placeholder="Enter Name" class="form-control" name="department_name" id="department_name" value="<?php echo $department_name?>" required>
+                      <label>Section Name:</label>
+                      <input type="text" placeholder="Enter Name" class="form-control" name="section_name" id="section_name" value="<?php echo $sec_name?>" required>
                     </div>
                   </div>
                   <div class="col-md-4"> 
                     <div class="form-group">
                       <label>Status:</label>
-                      <select class="form-control custom-select" name="department_status" id="department_status">
-                        <?php if ($department_status == 1) {?>
+                      <select class="form-control custom-select" name="section_status" id="section_status">
+                        <?php if ($sec_status == 1) {?>
                         <option value='1' selected>ACTIVE [Current]</option>
                         <option value='0'>DEACTIVE</option>
-                        <?php } elseif ($department_status == 0) { ?>
+                        <?php } elseif ($section_status == 0) { ?>
                         <option value='1'>ACTIVE</option>
                         <option value='0' selected>DEACTIVE [Current]</option>
                         <?php } ?>

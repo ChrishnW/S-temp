@@ -70,12 +70,18 @@
                       $result = mysqli_query($con,"SELECT section.id, section.sec_id, section.sec_name, department.dept_name , section.status FROM section LEFT JOIN department ON department.dept_id=section.dept_id");               
                       if (mysqli_num_rows($result)>0) { 
                         while ($row = $result->fetch_assoc()) {
+                          if ($row['status'] == 1){
+                            $label = "<button type='button' class='btn btn-success'>Active</button>";
+                          }
+                          else if ($row['status'] == 0){
+                            $label = "<button type='button' class='btn btn-danger'>Deactive</button>";
+                          }
                           echo "<tr>    
-                            <td> <center /><a href='section_edit.php?id=".$row['id']."' <button class='btn btn-primary' ><i class='fa fa-edit fa-1x'></i> Edit</button></a> </td> 
+                            <td> <center /><a href='section_edit.php?sc_id=".$row['id']."' <button class='btn btn-primary' ><i class='fa fa-edit fa-1x'></i> Edit</button></a> </td> 
                             <td>" . $row["sec_id"] . "</td> 
                             <td>" . $row["sec_name"] . "</td> 
                             <td>" . $row["dept_name"] . "</td> 
-                            <td><center/>" .($row['status']=='1' ? '<p>ACTIVE</p>' : '<p">INACTIVE</p>' ). "</td>
+                            <td><center/>" . $label . "</td>
                           </tr>";
                         }
                       } 
