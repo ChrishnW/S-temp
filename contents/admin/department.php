@@ -40,8 +40,13 @@
 
           <!-- DataTales Example -->
           <div class="card border-primary shadow mb-4">
-            <div class="card-header bg-primary py-3">
-              <h6 class="m-0 font-weight-bold text-white">Active Department</h6>
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
+              <h6 class="m-0 font-weight-bold text-white">Active Departments</h6>
+                <div class="dropdown no-arrow">
+                  <span class="text-white" data-toggle="modal" data-target="#accountCreateModal">
+                    <i class="fas fa-plus fa-sm fa-fw text-gray-400"></i> Register New Department
+                  </span>
+                </div>
             </div>
             <div class="card-body">
               <div class="table-responsive">
