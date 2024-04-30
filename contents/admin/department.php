@@ -74,7 +74,7 @@
                       if (mysqli_num_rows($result)>0) { 
                         while ($row = $result->fetch_assoc()) {
                           echo "<tr>    
-                            <td> <center /><a href='department_edit.php?id=".$row['id']."' <button class='btn btn-primary' ><i class='fa fa-edit fa-1x'></i> Edit</button></a> </td> 
+                            <td> <center /><a href='department_edit.php?dep_id=".$row['id']."' <button class='btn btn-primary' ><i class='fa fa-edit fa-1x'></i> Edit</button></a> </td> 
                             <td>" . $row["dept_id"] . "</td> 
                             <td>" . $row["dept_name"] . "</td> 
                             <td><center/>" .($row['status']=='1' ? '<p class="label label-success" style="font-size:100%;">ACTIVE</p>' : '<p class="label label-danger" style="font-size:100%;">INACTIVE</p>' ). "</td>

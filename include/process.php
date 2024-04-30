@@ -69,4 +69,34 @@
     }
   }
 
+  if(isset($_GET['dep_id'])){
+    $con->next_result();
+    $dep_id = $_GET['dep_id'];
+    $query  = mysqli_query($con, "SELECT * FROM department WHERE id='$dep_id'");       
+    $row    = mysqli_fetch_assoc($query);
+    $department_id     = $row['id'];
+    $department_code   = $row['dept_id'];
+    $department_name   = $row['dept_name'];
+    $department_status = $row['status'];
+  }
+
+  if(isset($_POST['department_id'])){
+    $con->next_result();
+    $dep_id      = $_POST['department_id'];
+    $dep_code    = $_POST['department_code'];
+    $dep_name    = $_POST['department_name'];
+    $dep_status  = $_POST['department_status'];
+    $check = mysqli_query($con,"SELECT * FROM department WHERE dept_id='$dep_code' AND dept_name='$dep_name' AND status='$dep_status'");
+    $check_row = mysqli_num_rows($check);
+    if ($check_row > 0){
+      echo '<script>alert("Failed")</script>';
+      echo '<script>history.back()</script>';
+    }
+    else {
+      $update = "UPDATE department SET dept_id='$dep_code', dept_name=UPPER('$dep_name'), status='$dep_status' WHERE id='$dep_id'";
+      $result = mysqli_query($con, $update);
+      echo '<script>alert("Success")</script>';
+      echo '<script>history.back()</script>';
+    }
+  }
 ?>
