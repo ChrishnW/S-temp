@@ -50,7 +50,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-stripped" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr class="table-success">
                       <th>Action</th>
@@ -73,11 +73,17 @@
                       $result = mysqli_query($con,"SELECT * FROM department");               
                       if (mysqli_num_rows($result)>0) { 
                         while ($row = $result->fetch_assoc()) {
+                          if ($row['status'] == 1){
+                            $label = "<button type='button' class='btn btn-success'>Active</button>";
+                          }
+                          else if ($row['status'] == 0){
+                            $label = "<button type='button' class='btn btn-danger'>Deactive</button>";
+                          }
                           echo "<tr>    
                             <td> <center /><a href='department_edit.php?dep_id=".$row['id']."' <button class='btn btn-primary' ><i class='fa fa-edit fa-1x'></i> Edit</button></a> </td> 
                             <td>" . $row["dept_id"] . "</td> 
                             <td>" . $row["dept_name"] . "</td> 
-                            <td><center/>" .($row['status']=='1' ? '<p class="label label-success" style="font-size:100%;">ACTIVE</p>' : '<p class="label label-danger" style="font-size:100%;">INACTIVE</p>' ). "</td>
+                            <td><center/>" . $label . "</td>
                           </tr>";
                         }
                       }

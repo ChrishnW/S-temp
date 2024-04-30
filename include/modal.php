@@ -20,8 +20,8 @@
 <!-- Password Change Modal -->
 <div class="modal fade" id="accountChangePassModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content border-primary">
-      <div class="modal-header bg-primary text-white">
+    <div class="modal-content border-warning">
+      <div class="modal-header bg-warning text-white">
         <h5 class="modal-title">Change Account Password</h5>
         <a href="#" data-dismiss="modal"><i class="fas fa-times text-dark"></i></a>
       </div>
@@ -80,24 +80,6 @@
         </button>
       </div>
       <div class="modal-body">The old password did not match.</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"> Back</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Success Query Modal-->
-<div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Success</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">UWU</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"> Back</button>
       </div>

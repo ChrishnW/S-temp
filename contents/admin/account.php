@@ -50,7 +50,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-stripped" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr class='table-success'>
                       <th>Action</th>
@@ -76,7 +76,7 @@
                   <tbody>
                     <?php
                       $con->next_result();
-                      $result = mysqli_query($con,"SELECT accounts.fname, accounts.lname, accounts.file_name , accounts.username, accounts.email, section.sec_name, access.access, accounts.status, accounts.id, department.dept_name, accounts.card, accounts.employee_id FROM accounts JOIN section ON accounts.sec_id=section.sec_id JOIN access on accounts.access=access.id JOIN department ON department.dept_id=section.dept_id");
+                      $result = mysqli_query($con,"SELECT accounts.fname, accounts.lname, accounts.file_name, accounts.username, accounts.email, section.sec_name, access.access, accounts.status, accounts.id, department.dept_name, accounts.card, accounts.employee_id FROM accounts JOIN section ON accounts.sec_id=section.sec_id JOIN access on accounts.access=access.id JOIN department ON department.dept_id=section.dept_id");
                       if (mysqli_num_rows($result)>0) { 
                         while ($row = $result->fetch_assoc()) {
                           if ($row['status'] == 1){

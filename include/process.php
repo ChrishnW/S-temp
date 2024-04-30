@@ -73,9 +73,8 @@
     $hash_default_pass = password_hash($default_pass, PASSWORD_DEFAULT);
     $update = "UPDATE accounts SET password='$hash_default_pass' WHERE id='$pass_index'";
     $result = mysqli_query($con, $update);
-    // echo '<script>alert("Success")</script>';
-    // echo '<script>history.back()</script>';
-    echo "<script> $(function() { $('#success').modal('show'); }); </script>";
+    echo '<script>alert("Success")</script>';
+    echo '<script>history.back()</script>';
   }
 
   if(isset($_POST['new_pass'])){
@@ -88,6 +87,10 @@
       $update = "UPDATE accounts SET password='$new_pass' WHERE id='$cp_index'";
       $result = mysqli_query($con, $update);
       echo '<script>alert("Success")</script>';
+      echo '<script>history.back()</script>';
+    }
+    else {
+      echo '<script>alert("Password not match!")</script>';
       echo '<script>history.back()</script>';
     }
   }
@@ -122,5 +125,6 @@
       echo '<script>history.back()</script>';
     }
   }
-  include('../../include/modal.php');
+
+  include('modal.php');
 ?>
